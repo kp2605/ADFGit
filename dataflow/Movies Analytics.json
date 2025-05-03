@@ -1,0 +1,103 @@
+{
+	"name": "Movies Analytics",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText3",
+						"type": "DatasetReference"
+					},
+					"name": "MoviesADLS"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText5",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "select1"
+				},
+				{
+					"name": "filter1"
+				},
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "window1"
+				},
+				{
+					"name": "aggregate1"
+				},
+				{
+					"name": "alterRow1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          movie as integer,",
+				"          title as string,",
+				"          genres as string,",
+				"          year as short,",
+				"          Rating as short,",
+				"          {Rotton Tomato} as short",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> MoviesADLS",
+				"MoviesADLS select(mapColumn(",
+				"          Movie = movie,",
+				"          Title = title,",
+				"          Genres = genres,",
+				"          Year = year,",
+				"          Rating,",
+				"          {Rotten Tomato} = {Rotton Tomato}",
+				"     ),",
+				"     skipDuplicateMapInputs: false,",
+				"     skipDuplicateMapOutputs: false) ~> select1",
+				"select1 filter(Year>1950) ~> filter1",
+				"filter1 derive(PrimaryGenre = iif(locate('|',Genres)>1,left(Genres,locate('|',Genres)-1),Genres)) ~> derivedColumn1",
+				"derivedColumn1 window(over(PrimaryGenre,",
+				"          Year),",
+				"     desc({Rotten Tomato}, true),",
+				"     RatingsRank = rank()) ~> window1",
+				"window1 aggregate(groupBy(PrimaryGenre,",
+				"          Year),",
+				"     AverageRated = avg({Rotten Tomato}),",
+				"          HighestRated = first(Title),",
+				"          LowestRated = last(Title),",
+				"          NumberofMovies = count()) ~> aggregate1",
+				"aggregate1 alterRow(upsertIf(true())) ~> alterRow1",
+				"alterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          IATA_CODE as string,",
+				"          AIRLINE as string,",
+				"          Country as string,",
+				"          First_Name as string,",
+				"          Last_Name as string,",
+				"          AIRPORT as string,",
+				"          CITY as string,",
+				"          STATE as string,",
+				"          COUNTRY as string,",
+				"          LATITUDE as string,",
+				"          LONGITUDE as string",
+				"     ),",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> sink1"
+			]
+		}
+	}
+}

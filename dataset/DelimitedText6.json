@@ -1,0 +1,44 @@
+{
+	"name": "DelimitedText6",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage2",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"FileName": "airlines.csv",
+				"FolderName": "output"
+			}
+		},
+		"parameters": {
+			"FileName": {
+				"type": "string",
+				"defaultValue": "airlines.csv"
+			},
+			"FolderName": {
+				"type": "string",
+				"defaultValue": "input"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().FileName",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().FolderName",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

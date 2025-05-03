@@ -1,9 +1,9 @@
 {
-	"name": "pipeline1",
+	"name": "MoviesAnalytics",
 	"properties": {
 		"activities": [
 			{
-				"name": "dataflow2",
+				"name": "Movies Analytics",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "dataflow2",
+						"referenceName": "Movies Analytics",
 						"type": "DataFlowReference"
 					},
 					"compute": {
@@ -28,7 +28,7 @@
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2025-04-19T06:17:42Z"
+		"lastPublishTime": "2025-04-20T05:00:51Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }
