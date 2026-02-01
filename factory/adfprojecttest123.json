@@ -1,0 +1,17 @@
+{
+	"name": "adfprojecttest123",
+	"properties": {
+		"globalParameters": {
+			"Servername": {
+				"type": "string",
+				"value": "DESKTOP-H743GKV\\SQLEXPRESS"
+			}
+		}
+	},
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "820c0575-3cbe-415e-bfc0-a4d9d4d3efb5",
+		"tenantId": "e0793d39-0939-496d-b129-198edd916feb"
+	}
+}

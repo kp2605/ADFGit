@@ -1,0 +1,12 @@
+{
+	"name": "ls_AKV",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "linked service for Azure Key vault",
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://deproject.vault.azure.net/"
+		}
+	}
+}

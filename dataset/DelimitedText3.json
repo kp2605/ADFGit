@@ -1,0 +1,53 @@
+{
+	"name": "DelimitedText3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adls_ouput",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@concat('Incremental','', pipeline().RunId,'.csv')",
+					"type": "Expression"
+				},
+				"folderPath": "Output",
+				"fileSystem": "test"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "266783",
+				"type": "String"
+			},
+			{
+				"name": "01-05-1974",
+				"type": "String"
+			},
+			{
+				"name": "M",
+				"type": "String"
+			},
+			{
+				"name": "New York",
+				"type": "String"
+			},
+			{
+				"name": "John",
+				"type": "String"
+			},
+			{
+				"name": "17-07-2020 14:39",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

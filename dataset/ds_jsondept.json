@@ -1,0 +1,31 @@
+{
+	"name": "ds_jsondept",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adls_ouput",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "DepartmentID.json",
+				"folderPath": "input",
+				"fileSystem": "test"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"DepID": {
+					"type": "integer"
+				},
+				"DepName": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

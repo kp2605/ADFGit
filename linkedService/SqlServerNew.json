@@ -1,0 +1,16 @@
+{
+	"name": "SqlServerNew",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "integrated security=False;data source=DESKTOP-H743GKV\\SQLEXPRESS;initial catalog=AP;user id=test",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI1NjI3OTUzMi00MmZlLTQzMjItYWFhMi03Y2E3MWEwZWY5NzMiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "integrationRuntime1",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

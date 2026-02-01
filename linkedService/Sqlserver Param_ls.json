@@ -1,0 +1,25 @@
+{
+	"name": "Sqlserver Param_ls",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"parameters": {
+			"Servername": {
+				"type": "String"
+			},
+			"Databasename": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "integrated security=True;data source=@{linkedService().Servername};initial catalog=@{linkedService().Databasename}",
+			"userName": "dellghr4663@outlook.com",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJkZjM3MWNhMS1lOTdmLTQyZmEtYTk3YS1hMDg3MTQ2NDZlNDUiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "integrationRuntime1",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

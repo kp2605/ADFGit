@@ -1,0 +1,34 @@
+{
+	"name": "ds_jsonmapping",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adls_ouput",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Mapping.json",
+				"folderPath": "input",
+				"fileSystem": "test"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"MappingID": {
+					"type": "integer"
+				},
+				"EmployeeeID": {
+					"type": "integer"
+				},
+				"DepID": {
+					"type": "integer"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

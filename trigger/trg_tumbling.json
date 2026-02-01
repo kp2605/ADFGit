@@ -1,0 +1,27 @@
+{
+	"name": "trg_tumbling",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipeline": {
+			"pipelineReference": {
+				"referenceName": "pipeline5",
+				"type": "PipelineReference"
+			}
+		},
+		"type": "TumblingWindowTrigger",
+		"typeProperties": {
+			"frequency": "Minute",
+			"interval": 5,
+			"startTime": "2024-01-30T15:58:00Z",
+			"endTime": "2024-02-06T03:23:32Z",
+			"delay": "00:00:30",
+			"maxConcurrency": 50,
+			"retryPolicy": {
+				"count": 2,
+				"intervalInSeconds": 30
+			},
+			"dependsOn": []
+		}
+	}
+}
